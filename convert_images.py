@@ -1,9 +1,32 @@
+"""
+convert_images.py
+
+This script allows users to convert multiple image files to a selected output format
+using a graphical user interface. Users can select the input files, choose the output
+directory, and specify the desired output format from a predefined list (PNG, JPEG, BMP, GIF, TIFF).
+
+Usage:
+1. Run the script.
+2. Select the images you want to convert.
+3. Choose the directory where the converted images will be saved.
+4. Select the desired output format from the dropdown menu.
+5. Click the "Proceed" button to start the conversion.
+
+The script uses the following libraries:
+- tkinter: For the graphical user interface
+- PIL (Pillow): For image processing
+
+Author: Christian Brandt
+Date: 2024-05-22
+"""
+
 from tkinter import filedialog, messagebox, Tk, simpledialog
 from tkinter import Toplevel, Label, Button, StringVar, OptionMenu
 import os
 from PIL import Image
 
 def convert_images():
+    """Main function to handle the image conversion process."""
     # Hide the main Tkinter window
     root = Tk()
     root.withdraw()
@@ -54,6 +77,7 @@ def convert_images():
         messagebox.showerror("Error", f"An error occurred: {e}")
 
 def process_images(files, output_dir, output_format):
+    """Function to process and convert the images."""
     for file_path in files:
         try:
             im = Image.open(file_path)
